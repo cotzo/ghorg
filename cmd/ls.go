@@ -16,7 +16,7 @@ func init() {
 var lsCmd = &cobra.Command{
 	Use:   "ls [dir]",
 	Short: "List contents of your ghorg home or ghorg directories",
-	Long:  `If no dir is specified it will list contents of GHORG_ABSOLUTE_PATH_TO_CLONE_TO. When specifying a dir you can omit _ghorg`,
+	Long:  `If no dir is specified it will list contents of GHORG_ABSOLUTE_PATH_TO_CLONE_TO.`,
 	Run:   lsFunc,
 }
 
@@ -59,11 +59,6 @@ func listGhorgHome() {
 }
 
 func listGhorgDir(arg string) {
-
-	if !strings.HasSuffix(arg, "_ghorg") {
-		arg = arg + "_ghorg"
-	}
-
 	arg = strings.ReplaceAll(arg, "-", "_")
 
 	ghorgDir := os.Getenv("GHORG_ABSOLUTE_PATH_TO_CLONE_TO") + arg
